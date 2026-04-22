@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head><title>Icon Generator</title></head>
+<body>
+<canvas id="c192" width="192" height="192"></canvas>
+<canvas id="c512" width="512" height="512"></canvas>
+<script>
+function drawIcon(canvas, size) {
+  const ctx = canvas.getContext('2d');
+  const r = size * 0.195;
+  // Background
+  ctx.beginPath();
+  ctx.roundRect(0, 0, size, size, r);
+  ctx.fillStyle = '#2D6A4F';
+  ctx.fill();
+  // Leaf 1
+  ctx.save();
+  ctx.translate(size*0.45, size*0.41);
+  ctx.rotate(-30 * Math.PI/180);
+  ctx.beginPath();
+  ctx.ellipse(0, 0, size*0.156, size*0.215, 0, 0, Math.PI*2);
+  ctx.fillStyle = '#74C69D';
+  ctx.fill();
+  ctx.restore();
+  // Leaf 2
+  ctx.save();
+  ctx.translate(size*0.567, size*0.469);
+  ctx.rotate(20 * Math.PI/180);
+  ctx.beginPath();
+  ctx.ellipse(0, 0, size*0.107, size*0.156, 0, 0, Math.PI*2);
+  ctx.fillStyle = '#52B788';
+  ctx.fill();
+  ctx.restore();
+  // Stem
+  ctx.beginPath();
+  ctx.roundRect(size*0.479, size*0.586, size*0.043, size*0.156, size*0.021);
+  ctx.fillStyle = '#1B4332';
+  ctx.fill();
+}
+drawIcon(document.getElementById('c192'), 192);
+drawIcon(document.getElementById('c512'), 512);
+document.querySelectorAll('canvas').forEach(c => {
+  const a = document.createElement('a');
+  a.href = c.toDataURL('image/png');
+  a.download = `icon-${c.width}.png`;
+  a.textContent = `Download icon-${c.width}.png`;
+  a.style.display = 'block';
+  document.body.appendChild(a);
+});
+</script>
+</body>
+</html>

@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react'
 
 const FAVS_KEY = 'barman_ai_favs'
-const API_KEY = 'METS_TA_CLE_ICI'
+const API_KEY = 'import.meta.env.VITE_ANTHROPIC_KEY'
 const API_URL = 'https://api.anthropic.com/v1/messages'
 
 const API_HEADERS = {
